@@ -1,28 +1,8 @@
-/* ==========================================================================
-   #POMODORO APP STYLES
-   ========================================================================== */
-
-/**
- *
- * Inheriting box sizing slightly better best-practice
- * https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
- *
- */
 
  html {
     box-sizing: border-box;
   }
-  
-  *,
-  *::before,
-  *::after {
-    box-sizing: inherit;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Using CSS custom properties (variables) 
-  https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties */
+ 
   :root {
     --pomodoro: hsl(25deg 91% 57%);
     --shortBreak: hsl(48, 23%, 40%);
@@ -71,7 +51,7 @@
     height: 100vh;
   }
   
-  .mode-buttons {
+   button {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -96,7 +76,7 @@
     font-family: arial, sans-serif;
   }
   
-  .mode-button {
+  button {
     font-size: 16px;
     height: 28px;
     cursor: pointer;
@@ -110,53 +90,12 @@
     background: none;
   }
   
-  .mode-button.active {
+  button.active {
     border-color: #fff;
   }
   
-  .blinking {
-    animation: blinking 0.7s infinite;
-  }
-  @keyframes blinking {
-    0% {
-      color: rgb(0, 255, 8);
-    }
-    49% {
-      color: transparent;
-    }
-    50% {
-      color: transparent;
-    }
-    99% {
-      color: transparent;
-    }
-    100% {
-      color: rgb(0, 255, 8);
-    }
-  }
   
-  .blinking-danger {
-    animation: blinkingDanger 1s infinite;
-  }
-  @keyframes blinkingDanger {
-    0% {
-      color: rgb(255, 0, 0);
-    }
-    49% {
-      color: transparent;
-    }
-    50% {
-      color: transparent;
-    }
-    99% {
-      color: transparent;
-    }
-    100% {
-      color: rgb(255, 0, 0);
-    }
-  }
-  
-  .main-button {
+  button {
     cursor: pointer;
     box-shadow: rgb(235, 235, 235) 0px 6px 0px;
     font-size: 2vw;
@@ -198,35 +137,6 @@
     border-radius: 2px;
     margin: 0px 4px;
     text-align: center;
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
-  footer {
-    background-color: transparent;
-    color: white;
-    height: 20vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  
-  footer .social-links a {
-    text-decoration: none;
-    color: white;
-    padding: 10px;
-  }
-  
-  footer .social-links a:hover {
-    color: #2f9ee5;
-  }
-  
-  footer .copy span {
-    color: #000000;
   }
   
   @media screen and (max-width: 550px) {
