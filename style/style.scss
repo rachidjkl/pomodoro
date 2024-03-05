@@ -1,0 +1,41 @@
+
+ html {
+    box-sizing: border-box;
+    
+  }
+
+  body{
+    background-color: hsl(25deg 91% 57%);
+  }
+ 
+  :root {
+    --pomodoro: hwb(25 18% 4%);
+    --shortBreak: hsl(231, 23%, 40%);
+    --longBreak: hsl(105, 16%, 40%);
+  }
+
+  #timer{
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    font-size: 1000%;
+    font-family: 'Lato', sans-serif;
+  }
+
+  .btn-6 {
+    $btn-color: random-color($max:200);
+    $btn-color-dark: shade($btn-color, 40%);
+    color: tint($btn-color);
+    
+    span {
+      @include absolute();
+      display: block;
+      @include size(0);
+      border-radius: 50%;
+      background-color: $btn-color-dark;
+      transition: width 0.4s ease-in-out, height 0.4s ease-in-out;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
+  }
+  

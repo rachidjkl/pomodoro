@@ -44,18 +44,37 @@ function stopTimer() {
 function resetTimer() {
 }
 
-function modoPomo() {
+function modoPomo(color) {
+  document.getElementById('body').style.backgroundColor = color;
   stopTimer()
   document.getElementById('timer').innerText = "25:00";
   modo = 0;
 }
-function modoDes() {
+function modoDes(color) {
+  document.getElementById('body').style.backgroundColor = color;
   stopTimer()
   document.getElementById('timer').innerText = "05:00";
   modo = 1;
 }
-function modoLar() {
+function modoLar(color) {
+  document.getElementById('body').style.backgroundColor = color;
   stopTimer()
   modo = 2;
   document.getElementById('timer').innerText = "15:00";
 }
+
+$(function() {  
+  $('.btn-6')
+    .on('mouseenter', function(e) {
+			var parentOffset = $(this).offset(),
+      		relX = e.pageX - parentOffset.left,
+      		relY = e.pageY - parentOffset.top;
+			$(this).find('span').css({top:relY, left:relX})
+    })
+    .on('mouseout', function(e) {
+			var parentOffset = $(this).offset(),
+      		relX = e.pageX - parentOffset.left,
+      		relY = e.pageY - parentOffset.top;
+    	$(this).find('span').css({top:relY, left:relX})
+    });
+});
