@@ -1,6 +1,9 @@
 var timer;
 var endTime = new Date().getTime() + 25 * 60 * 1000;
 var modo = 0;
+const btnPom = document.getElementById('btnPom');
+const btnDes = document.getElementById('btnDes');
+const btnLar = document.getElementById('btnLar');
 
 function updateTimer() {
   const currentTime = new Date().getTime();
@@ -22,7 +25,6 @@ function startTimer() {
   switch (modo) {
     case 0:
       endTime = new Date().getTime() + 25 * 60 * 1000;
-      
     break;
     case 1:
       endTime = new Date().getTime() + 5 * 60 * 1000;
@@ -49,17 +51,19 @@ function modoPomo(color) {
   stopTimer()
   document.getElementById('timer').innerText = "25:00";
   modo = 0;
+  btnPom.classList.add("secondary");
 }
 function modoDes(color) {
   document.getElementById('body').style.backgroundColor = color;
   stopTimer()
   document.getElementById('timer').innerText = "05:00";
   modo = 1;
+  btnDes.classList.add("secondary");
 }
 function modoLar(color) {
   document.getElementById('body').style.backgroundColor = color;
   stopTimer()
-  modo = 2;
   document.getElementById('timer').innerText = "15:00";
+  modo = 2;
+  btnLar.classList.add("secondary");
 }
-

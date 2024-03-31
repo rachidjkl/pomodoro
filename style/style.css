@@ -7,17 +7,58 @@ body {
 }
 
 :root {
-  --pomodoro: hwb(25 18% 4%);
-  --shortBreak: hsl(231, 23%, 40%);
-  --longBreak: hsl(105, 16%, 40%);
+  --pomodoro: #f5812e;
+  --shortBreak: #4f567d;
+  --longBreak: #5e7656;
 }
 
-#timer {
+.todo {
   position: absolute;
   top: 40%;
   left: 40%;
+}
+
+#timer{
   font-size: 1000%;
   font-family: "Lato", sans-serif;
 }
 
-/*# sourceMappingURL=style.css.map */
+.btn {
+  border: none;
+  color: black;
+  padding: 14px 28px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.secondary {
+  background-color: rgba(255, 255, 255, 0.356);
+  border: 2px solid #e7e7e76b;
+} 
+.secondary:hover {background: #dddddd7a; 
+  color: rgba(255, 255, 255, 0.486);
+}
+
+.pomo {
+  background-color: #f5812e;
+  border: 2px solid #e7e7e76b;
+} 
+.pomo:hover {
+  background: #f5812e;
+}
+
+.des {
+  background-color: #4f567d;
+  border: 2px solid #e7e7e76b;
+} 
+.des:hover {
+  background: #4f567d;
+}
+
+.lar {
+  background-color: #5e7656;
+  border: 2px solid #e7e7e76b;
+}
+.lar:hover {
+  background: #5e7656;
+}
