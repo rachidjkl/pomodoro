@@ -12,7 +12,7 @@ body {
   --longBreak: #5e7656;
 }
 
-.todo {
+.todo1 {
   position: absolute;
   top: 40%;
   left: 40%;
@@ -61,4 +61,31 @@ body {
 }
 .lar:hover {
   background: #5e7656;
+}
+
+.flechas {
+  position: absolute;
+  top: 80%;
+  left: 47%;
+}
+
+.flechas img {
+  width: 25%;
+  animation: parpadeo 2s infinite;
+}
+
+@keyframes parpadeo {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.imagen-parpadeo {
+  /* animation: parpadeo 1s infinite; */
 }

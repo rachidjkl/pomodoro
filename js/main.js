@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var timer;
   var endTime = new Date().getTime() + 25 * 60 * 1000;
   var modo = 0;
+  const imgFlecha = document.getElementById('flechas');
   const btnStart = document.getElementById('btnStart');
   const btnStop = document.getElementById('btnStop');
   const btnPomo = document.getElementById('btnPomo');
@@ -64,6 +65,10 @@ document.addEventListener("DOMContentLoaded", function() {
   
   btnLar.addEventListener("click", function() {
     modoLar("hsl(105, 16%, 40%)");
+  });
+
+  imgFlecha.addEventListener("click", function() {
+    
   });
 
   function modoPomo(color) {
