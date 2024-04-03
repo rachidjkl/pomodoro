@@ -1,9 +1,11 @@
 html {
   box-sizing: border-box;
+  scroll-snap-type: y mandatory;
 }
 
 body {
   background-color: hsl(25, 91%, 57%);
+  overflow-x: hidden;
 }
 
 :root {
@@ -12,10 +14,25 @@ body {
   --longBreak: #5e7656;
 }
 
+.primer-pomodoro{
+  height: 100vh;
+  width: 100%;
+}
+
+.segundo-pomodoro{
+  height: 100vh;
+  width: 100%;
+}
+
+div[class$="pomodoro"] {
+  scroll-snap-align: start;
+scroll-snap-stop: always;
+} 
+
 .todo1 {
-  position: absolute;
-  top: 40%;
-  left: 40%;
+  position: relative;
+  top: 30%;
+  left: 35%;
 }
 
 #timer{
@@ -64,13 +81,13 @@ body {
 }
 
 .flechas {
-  position: absolute;
-  top: 80%;
+  position: relative;
+  top: 40%;
   left: 47%;
 }
 
 .flechas img {
-  width: 25%;
+  width: 7%;
   animation: parpadeo 2s infinite;
 }
 
@@ -86,6 +103,6 @@ body {
   }
 }
 
-.imagen-parpadeo {
-  /* animation: parpadeo 1s infinite; */
+.tareas {
+  scroll-snap-stop: always;
 }
