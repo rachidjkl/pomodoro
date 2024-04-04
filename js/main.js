@@ -98,4 +98,22 @@ document.addEventListener("DOMContentLoaded", function() {
     btnDes.className = "btn secondary";
     btnLar.className = "btn primary";
   }
+
+  
+  const arrastrable = document.getElementById("mmg");
+  const contenedorDestino = document.getElementById("contenedorDestino");
+
+  arrastrable.addEventListener('dragstart', function(event) {
+    event.dataTransfer.setData('text', event.target.id);
+  });
+
+  contenedorDestino.addEventListener('dragover', function(event) {
+    event.preventDefault();
+  });
+
+  contenedorDestino.addEventListener('drop', function(event) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData('text');
+    event.target.appendChild(document.getElementById(data));
+  });
 });

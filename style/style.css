@@ -22,6 +22,7 @@ body {
 .segundo-pomodoro{
   height: 100vh;
   width: 100%;
+  display: flex;
 }
 
 div[class$="pomodoro"] {
@@ -103,6 +104,45 @@ scroll-snap-stop: always;
   }
 }
 
-.tareas {
-  scroll-snap-stop: always;
+
+.porHacer{
+  position: relative;
+  top: 2.4%;
+  margin-right: 1%;
+  margin-left: 0.52%;
+  background-color: rgba(255, 255, 255, 0.514);
+  height: 95%;
+  width: 33%;
+  border-radius: 1%;
+  border: 2px solid #000;
+}
+.haciendo{
+  position: relative;
+  top: 2.4%;
+  margin-right: 1%;
+  background-color: rgba(255, 255, 255, 0.514);
+  height: 95%;
+  width: 32%;
+  border-radius: 1%;
+  border: 2px solid #000;
+}
+
+.hecho{
+  position: relative;
+  top: 2.4%;
+  background-color: rgba(255, 255, 255, 0.514);
+  height: 95%;
+  width: 32%;
+  border-radius: 1%;
+  border: 2px solid #000;
+}
+
+.tarea{
+  margin-top: 3%;
+  margin-left: 2.3%;
+  background-color: rgba(255, 255, 255, 0.829);
+  border-radius: 2%;
+  height: 10%;
+  width: 95%;
+  cursor: grab;
 }
