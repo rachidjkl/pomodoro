@@ -167,3 +167,6 @@ scroll-snap-stop: always;
     overflow-y: auto;
     max-height: 600px;
 }
+ .container{
+  display: flex;
+ }

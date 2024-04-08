@@ -107,6 +107,56 @@ document.addEventListener("DOMContentLoaded", function() {
   // ----------------------------------------------------------DRAG AND DROP------------------------------------------------------//
 
   const kanbanToDoColumn = document.querySelector(".porHacer");
+  const haciendo = document.querySelector(".haciendo");
+  const hecho = document.querySelector(".hecho");
+
+  kanbanToDoColumn.ondragover = dragOver;
+  kanbanToDoColumn.ondragenter = dragEnter;
+  kanbanToDoColumn.ondragleave = dragLeave;
+  kanbanToDoColumn.ondrop = dragDrop;
+
+  haciendo.ondragover = dragOver;
+  haciendo.ondragenter = dragEnter;
+  haciendo.ondragleave = dragLeave;
+  haciendo.ondrop = dragDrop;
+
+  hecho.ondragover = dragOver;
+  hecho.ondragenter = dragEnter;
+  hecho.ondragleave = dragLeave;
+  hecho.ondrop = dragDrop;
+
+  function dragStart(event) {
+    event.dataTransfer.setData("text/plain", event.target.id);
+  }
+  
+  function dragOver(event) {
+    event.preventDefault();
+  }
+  
+  function dragEnter(event) {
+    event.preventDefault();
+    if (event.target.classList.contains("divTask")) {
+      event.target.classList.add("hovered");
+    }
+  }
+  
+  function dragLeave(event) {
+    event.preventDefault();
+    if (event.target.classList.contains("divTask")) {
+      event.target.classList.remove("hovered");
+    }
+  }
+  
+  function dragDrop(event) {
+    event.preventDefault();
+    const taskId = event.dataTransfer.getData("text/plain");
+    const draggedTask = document.getElementById(taskId);
+    if (event.target.classList.contains("divTask")) {
+      event.target.appendChild(draggedTask);
+      event.target.classList.remove("hovered");
+    }
+  }
+
   const addTaskButton = document.getElementById("add-task");
   addTaskButton.addEventListener("click", addTask);
 
@@ -177,35 +227,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
   }
 
-  function dragStart(event) {
-    event.dataTransfer.setData("text/plain", event.target.id);
-  }
-  
-  function dragOver(event) {
-    event.preventDefault();
-  }
-  
-  function dragEnter(event) {
-    event.preventDefault();
-    if (event.target.classList.contains("divTask")) {
-      event.target.classList.add("hovered");
-    }
-  }
-  
-  function dragLeave(event) {
-    event.preventDefault();
-    if (event.target.classList.contains("divTask")) {
-      event.target.classList.remove("hovered");
-    }
-  }
-  
-  function dragDrop(event) {
-    event.preventDefault();
-    const taskId = event.dataTransfer.getData("text/plain");
-    const draggedTask = document.getElementById(taskId);
-    if (event.target.classList.contains("divTask")) {
-      event.target.appendChild(draggedTask);
-      event.target.classList.remove("hovered");
-    }
-  }
+
 });
