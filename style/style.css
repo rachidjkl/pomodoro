@@ -106,3 +106,17 @@ scroll-snap-stop: always;
 .tareas {
   scroll-snap-stop: always;
 }
+
+.todo2 {
+  display: flex;
+  position: relative;
+  top: 30%;
+  left: 35%;
+}
+
+.porHacer{
+  height: 95vh;
+  width: 33%;
+  background-color: blueviolet;
+  border-radius: 1%;
+}
