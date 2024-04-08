@@ -31,17 +31,23 @@
   
 
   <div class="segundo-pomodoro">
-    <div class="porHacer">
-      <div id="mmg" class="tarea">Añadir</div>
-      <div class="tarea">Añadir</div>
-      <div class="tarea">Añadir</div>
-      <div class="tarea">Añadir</div>
+    <div class="container">
+      <div class="divTask porHacer" ondragover="dragOver(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)" ondrop="dragDrop(event)">
+        <div class="add">
+          <button type="button" class="btn btn-primary" id="add-task">
+              <h5>Add task</h5>
+          </button>
+          </div>
+      </div>
+      <div class="divTask haciendo" ondragover="dragOver(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)" ondrop="dragDrop(event)"></div>
+      <div class="divTask hecho" ondragover="dragOver(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)" ondrop="dragDrop(event)"></div>
+      </div>
+        <div id="task-2" class="tarea">
+          <h1>MIERDA</h1>
+  
     </div>
-    <div id="contenedorDestino" class="haciendo"></div>
-    <div class="hecho"></div>
   </div>
       
-  
 
 </body>
 

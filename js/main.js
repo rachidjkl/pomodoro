@@ -100,20 +100,112 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   
-  const arrastrable = document.getElementById("mmg");
-  const contenedorDestino = document.getElementById("contenedorDestino");
+  const task = document.getElementById("task-2");
 
-  arrastrable.addEventListener('dragstart', function(event) {
-    event.dataTransfer.setData('text', event.target.id);
-  });
 
-  contenedorDestino.addEventListener('dragover', function(event) {
+
+  // ----------------------------------------------------------DRAG AND DROP------------------------------------------------------//
+
+  const kanbanToDoColumn = document.querySelector(".porHacer");
+  const addTaskButton = document.getElementById("add-task");
+  addTaskButton.addEventListener("click", addTask);
+
+  function addTask() {
+    let task = document.createElement("div");
+    let taskTitleInput = document.createElement("input");
+    let taskDescriptionTextarea = document.createElement("textarea");
+    let taskTitle = document.createElement("h1");
+    let taskDescription = document.createElement("h2");
+    let confirmButton = document.createElement("button");
+    let deleteButton = document.createElement("button");
+
+    task.id = "task-" + Math.floor(Math.random() * 1000);
+    task.classList.add("task");
+    task.classList.add("draggable");
+    taskTitle.classList.add("task-title");
+    taskDescription.classList.add("task-description");
+    confirmButton.classList.add("btn", "btn-success");
+    deleteButton.classList.add("btn", "btn-danger");
+    task.setAttribute("draggable", "true");
+
+    taskTitleInput.type = "text";
+    taskTitleInput.placeholder = "Title";
+    taskDescriptionTextarea.placeholder = "Description";
+    confirmButton.textContent = "Confirm";
+    deleteButton.textContent = "Delete Task";
+
+    task.appendChild(taskTitleInput);
+    task.appendChild(taskDescriptionTextarea);
+    task.appendChild(confirmButton);
+
+    kanbanToDoColumn.appendChild(task);
+
+    confirmButton.addEventListener("click", function () {
+      if (taskTitleInput.value !== "" && taskDescriptionTextarea.value !== "") {
+        let title = taskTitleInput.value;
+        let description = taskDescriptionTextarea.value;
+
+        taskTitle.textContent = title;
+        taskDescription.textContent = description;
+
+        task.removeChild(taskTitleInput);
+        task.removeChild(taskDescriptionTextarea);
+
+        task.appendChild(taskTitle);
+        task.appendChild(taskDescription);
+        task.appendChild(deleteButton);
+
+        confirmButton.style.display = "none";
+      } else {
+        alert("Enter Text");
+      }
+    });
+
+    deleteButton.addEventListener("click", function () {
+      task.parentNode.removeChild(task);
+    });
+
+
+
+
+
+    task.addEventListener("dragstart", dragStart);
+    task.addEventListener("dragover", dragOver);
+    task.addEventListener("dragenter", dragEnter);
+    task.addEventListener("dragleave", dragLeave);
+    task.addEventListener("drop", dragDrop);
+
+  }
+
+  function dragStart(event) {
+    event.dataTransfer.setData("text/plain", event.target.id);
+  }
+  
+  function dragOver(event) {
     event.preventDefault();
-  });
-
-  contenedorDestino.addEventListener('drop', function(event) {
+  }
+  
+  function dragEnter(event) {
     event.preventDefault();
-    var data = event.dataTransfer.getData('text');
-    event.target.appendChild(document.getElementById(data));
-  });
+    if (event.target.classList.contains("divTask")) {
+      event.target.classList.add("hovered");
+    }
+  }
+  
+  function dragLeave(event) {
+    event.preventDefault();
+    if (event.target.classList.contains("divTask")) {
+      event.target.classList.remove("hovered");
+    }
+  }
+  
+  function dragDrop(event) {
+    event.preventDefault();
+    const taskId = event.dataTransfer.getData("text/plain");
+    const draggedTask = document.getElementById(taskId);
+    if (event.target.classList.contains("divTask")) {
+      event.target.appendChild(draggedTask);
+      event.target.classList.remove("hovered");
+    }
+  }
 });
