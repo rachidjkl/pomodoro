@@ -106,14 +106,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // ----------------------------------------------------------DRAG AND DROP------------------------------------------------------//
 
-  const kanbanToDoColumn = document.querySelector(".porHacer");
+  const porHacer = document.querySelector(".porHacer");
   const haciendo = document.querySelector(".haciendo");
   const hecho = document.querySelector(".hecho");
 
-  kanbanToDoColumn.ondragover = dragOver;
-  kanbanToDoColumn.ondragenter = dragEnter;
-  kanbanToDoColumn.ondragleave = dragLeave;
-  kanbanToDoColumn.ondrop = dragDrop;
+  porHacer.ondragover = dragOver;
+  porHacer.ondragenter = dragEnter;
+  porHacer.ondragleave = dragLeave;
+  porHacer.ondrop = dragDrop;
 
   haciendo.ondragover = dragOver;
   haciendo.ondragenter = dragEnter;
@@ -157,10 +157,10 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 
-  const addTaskButton = document.getElementById("add-task");
-  addTaskButton.addEventListener("click", addTask);
+  const añadirButton = document.getElementById("añadir");
+  añadirButton.addEventListener("click", añadirTask);
 
-  function addTask() {
+  function añadirTask() {
     let task = document.createElement("div");
     let taskTitleInput = document.createElement("input");
     let taskDescriptionTextarea = document.createElement("textarea");
@@ -169,29 +169,27 @@ document.addEventListener("DOMContentLoaded", function() {
     let confirmButton = document.createElement("button");
     let deleteButton = document.createElement("button");
 
-    task.id = "task-" + Math.floor(Math.random() * 1000);
-    task.classList.add("task");
-    task.classList.add("draggable");
-    taskTitle.classList.add("task-title");
-    taskDescription.classList.add("task-description");
-    confirmButton.classList.add("btn", "btn-success");
-    deleteButton.classList.add("btn", "btn-danger");
+    const tareas = document.getElementsByClassName('task');
+
+    task.id = "task-" + tareas.length;
+    task.classList.add("task", "draggable");
+    confirmButton.classList.add("btn");
+    deleteButton.classList.add("btn");
     task.setAttribute("draggable", "true");
 
-    taskTitleInput.type = "text";
-    taskTitleInput.placeholder = "Title";
-    taskDescriptionTextarea.placeholder = "Description";
-    confirmButton.textContent = "Confirm";
-    deleteButton.textContent = "Delete Task";
+    taskTitleInput.placeholder = "Tarea";
+    taskDescriptionTextarea.placeholder = "Descripcion";
+    confirmButton.textContent = "Confirmar";
+    deleteButton.textContent = "Borrar";
 
     task.appendChild(taskTitleInput);
     task.appendChild(taskDescriptionTextarea);
     task.appendChild(confirmButton);
 
-    kanbanToDoColumn.appendChild(task);
+    porHacer.appendChild(task);
 
     confirmButton.addEventListener("click", function () {
-      if (taskTitleInput.value !== "" && taskDescriptionTextarea.value !== "") {
+      if (!(taskTitleInput.value == "" && taskDescriptionTextarea.value == "")) {
         let title = taskTitleInput.value;
         let description = taskDescriptionTextarea.value;
 
@@ -207,7 +205,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         confirmButton.style.display = "none";
       } else {
-        alert("Enter Text");
+        alert("No pueden estar vacio");
       }
     });
 
@@ -215,16 +213,7 @@ document.addEventListener("DOMContentLoaded", function() {
       task.parentNode.removeChild(task);
     });
 
-
-
-
-
     task.addEventListener("dragstart", dragStart);
-    task.addEventListener("dragover", dragOver);
-    task.addEventListener("dragenter", dragEnter);
-    task.addEventListener("dragleave", dragLeave);
-    task.addEventListener("drop", dragDrop);
-
   }
 
 
